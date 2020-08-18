@@ -1,8 +1,5 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
-
-Vue.use(VueRouter);
 
 const routes = [
   {
@@ -18,10 +15,21 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+  {
+    path: "/todo",
+    name: "Todo",
+    component: () => import(/* webpackChunkName: "todo" */ "../views/Todo.vue")
+  },
+  {
+    path: "/girls",
+    name: "Girls",
+    component: () => import(/* webpackChunkName: "todo" */ "../views/Girls.vue")
   }
 ];
 
-const router = new VueRouter({
+const router = createRouter({
+  history: createWebHashHistory(),
   routes
 });
 
